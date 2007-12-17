@@ -13,7 +13,6 @@ Source:		ftp.perl.org/pub/CPAN/modules/by-module/CPAN/%{module}-%{version}.tar.b
 Url:		http://search.cpan.org/dist/%{module}/
 
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
 This module is part of CPAN.pm with the single purpose of testing 
