@@ -1,7 +1,7 @@
 %define module	CPAN-Test-Dummy-Perl5-Make-CircDepeTwo
 %define name	perl-%{module}
 %define version 1.00
-%define release %mkrel 1
+%define release %mkrel 3
 
 Name:		%{name}
 Version:	%{version}
