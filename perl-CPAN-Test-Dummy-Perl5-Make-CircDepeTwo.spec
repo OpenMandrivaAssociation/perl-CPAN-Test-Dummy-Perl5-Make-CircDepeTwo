@@ -1,19 +1,18 @@
-%define module	CPAN-Test-Dummy-Perl5-Make-CircDepeTwo
-%define name	perl-%{module}
-%define version 1.00
-%define release %mkrel 4
+%define upstream_name	 CPAN-Test-Dummy-Perl5-Make-CircDepeTwo
+%define upstream_version 1.00
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Summary:	%{module} module for perl
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 5
+
+Summary:	%{upstream_name} module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
-Source:		ftp.perl.org/pub/CPAN/modules/by-module/CPAN/%{module}-%{version}.tar.bz2
-Url:		http://search.cpan.org/dist/%{module}/
+Url:		http://search.cpan.org/dist/%{upstream_name}/
+Source0:	ftp.perl.org/pub/CPAN/modules/by-module/CPAN/%{upstream_name}-%{upstream_version}.tar.bz2
 
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module is part of CPAN.pm with the single purpose of testing 
@@ -21,14 +20,14 @@ CPAN.pm itself.
 Contains no functionality, and will never do so.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make}
+%make
 
 %check
-%{__make} test
+%make test
 
 %clean 
 rm -rf %{buildroot}
@@ -42,5 +41,3 @@ rm -rf %{buildroot}
 %doc Changes README
 %{perl_vendorlib}/
 %{_mandir}/*/*
-
-
