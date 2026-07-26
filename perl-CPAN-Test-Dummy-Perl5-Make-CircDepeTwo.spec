@@ -1,15 +1,13 @@
 %define upstream_name	 CPAN-Test-Dummy-Perl5-Make-CircDepeTwo
-%define upstream_version 1.00
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	9
+Version:	1.00
+Release:	10
 
 Summary:	%{upstream_name} module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}/
-Source0:	ftp.perl.org/pub/CPAN/modules/by-module/CPAN/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}/
+Source0:	ftp.perl.org/pub/CPAN/modules/by-module/CPAN/%{upstream_name}-%{version}.tar.bz2
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -21,7 +19,7 @@ CPAN.pm itself.
 Contains no functionality, and will never do so.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -46,9 +44,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 
 * Fri Feb 12 2010 Jérôme Quelin <jquelin@mandriva.org> 1.0.0-5mdv2011.0
 + Revision: 504831
-- rebuild using %%perl_convert_version
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.00-4mdv2010.0
+- rebuild using %1.00 Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.00-4mdv2010.0
 + Revision: 430344
 - rebuild
 
