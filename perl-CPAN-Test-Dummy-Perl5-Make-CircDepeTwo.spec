@@ -7,7 +7,7 @@ Summary:	%{upstream_name} module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/%{upstream_name}/
-Source0:	ftp.perl.org/pub/CPAN/modules/by-module/CPAN/%{upstream_name}-%{version}.tar.bz2
+Source0:	https://cpan.metacpan.org/authors/id/A/AN/ANDK/%{upstream_name}-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -19,45 +19,19 @@ CPAN.pm itself.
 Contains no functionality, and will never do so.
 
 %prep
-%setup -q -n %{upstream_name}-%{version}
+%autosetup -p1 -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%make
+%make_build
 
 %check
 %make test
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc Changes README
 %{perl_vendorlib}/
 %{_mandir}/*/*
-
-
-%changelog
-* Mon Apr 18 2011 Funda Wang <fwang@mandriva.org> 1.0.0-6mdv2011.0
-+ Revision: 654881
-- rebuild for updated spec-helper
-
-* Fri Feb 12 2010 Jérôme Quelin <jquelin@mandriva.org> 1.0.0-5mdv2011.0
-+ Revision: 504831
-- rebuild using %1.00 Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.00-4mdv2010.0
-+ Revision: 430344
-- rebuild
-
-* Wed Jul 30 2008 Thierry Vignaud <tv@mandriva.org> 1.00-3mdv2009.0
-+ Revision: 256187
-- rebuild
-- kill re-definition of %%buildroot on Pixel's request
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-* Thu Nov 15 2007 Stéphane Téletchéa <steletch@mandriva.org> 1.00-1mdv2008.1
-+ Revision: 108987
-- import perl-CPAN-Test-Dummy-Perl5-Make-CircDepeTwo
-
-
